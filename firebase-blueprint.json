@@ -1,0 +1,92 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "User profile document containing basic account info and role",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "User ID matching auth UID" },
+        "email": { "type": "string", "description": "Email address" },
+        "fullName": { "type": "string", "description": "Full name of the user" },
+        "role": { "type": "string", "enum": ["ADMIN", "TEACHER", "STUDENT", "PARENT"], "description": "User role in the system" },
+        "schoolId": { "type": "string", "description": "Associated school ID" },
+        "schoolName": { "type": "string", "description": "Associated school name" }
+      },
+      "required": ["id", "email", "fullName", "role"]
+    },
+    "Classroom": {
+      "title": "Classroom",
+      "description": "Classroom document representing a school class",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Classroom unique identifier" },
+        "name": { "type": "string", "description": "Class name e.g. 10A1" },
+        "code": { "type": "string", "description": "Class code" },
+        "gradeLevel": { "type": "number", "description": "Grade level from 1 to 12" },
+        "academicYearId": { "type": "string", "description": "Academic year ID" },
+        "roomNumber": { "type": "string", "description": "Room number" },
+        "homeroomTeacherId": { "type": "string", "description": "UID of the homeroom teacher" },
+        "homeroomTeacherName": { "type": "string", "description": "Name of homeroom teacher" },
+        "studentCount": { "type": "number", "description": "Number of students enrolled" },
+        "color": { "type": "string", "description": "Badge color code" },
+        "joinCode": { "type": "string", "description": "Join code for students" },
+        "isArchived": { "type": "boolean", "description": "Archive state" },
+        "createdAt": { "type": "string", "description": "ISO timestamp" }
+      },
+      "required": ["id", "name", "gradeLevel", "academicYearId", "roomNumber", "homeroomTeacherId"]
+    },
+    "Student": {
+      "title": "Student",
+      "description": "Student record belonging to a class",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Student ID" },
+        "studentCode": { "type": "string", "description": "Unique student code" },
+        "fullName": { "type": "string", "description": "Full name of the student" },
+        "gender": { "type": "string", "enum": ["Nam", "Nữ"], "description": "Gender" },
+        "classId": { "type": "string", "description": "Referenced classroom ID" },
+        "className": { "type": "string", "description": "Name of the class" },
+        "rollNumber": { "type": "number", "description": "Order number in class" },
+        "team": { "type": "string", "description": "Study team / tổ" },
+        "parentName": { "type": "string", "description": "Parent name" },
+        "parentPhone": { "type": "string", "description": "Parent phone" }
+      },
+      "required": ["id", "studentCode", "fullName", "classId"]
+    },
+    "Question": {
+      "title": "Question",
+      "description": "Question bank item",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "description": "Question ID" },
+        "code": { "type": "string", "description": "Question code" },
+        "content": { "type": "string", "description": "Question body text" },
+        "type": { "type": "string", "description": "Question format type" },
+        "difficulty": { "type": "string", "description": "Bloom difficulty level" },
+        "subject": { "type": "string", "description": "Subject name" },
+        "gradeLevel": { "type": "number", "description": "Grade level" },
+        "status": { "type": "string", "enum": ["draft", "pending", "approved", "rejected"], "description": "Approval status" },
+        "createdBy": { "type": "string", "description": "Creator user ID" }
+      },
+      "required": ["id", "content", "type", "difficulty", "subject", "status"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User account profiles"
+    },
+    "/classes/{classId}": {
+      "schema": { "$ref": "#/entities/Classroom" },
+      "description": "School classrooms managed by teachers"
+    },
+    "/students/{studentId}": {
+      "schema": { "$ref": "#/entities/Student" },
+      "description": "Student profiles and contact information"
+    },
+    "/questions/{questionId}": {
+      "schema": { "$ref": "#/entities/Question" },
+      "description": "Question bank repository"
+    }
+  }
+}

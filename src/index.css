@@ -1,0 +1,642 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Be Vietnam Pro', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-orbitron: 'Orbitron', sans-serif;
+    --font-rajdhani: 'Rajdhani', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --cyber-bg: #030B16;
+    --cyber-bg-secondary: #071525;
+    --cyber-card: #0A1B2D;
+    --cyber-cyan: #00E5FF;
+    --cyber-blue: #087CFF;
+    --cyber-purple: #A855F7;
+    --cyber-text: #EAFBFF;
+    --cyber-text-muted: #8BA9BC;
+    --cyber-error: #FF4D6D;
+    --cyber-success: #00F5A0;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #030B16;
+    color: #EAFBFF;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+
+  html.light body {
+    background-color: #f8fafc;
+    color: #0f172a;
+  }
+}
+
+.font-orbitron {
+  font-family: var(--font-orbitron);
+}
+
+.font-rajdhani {
+  font-family: var(--font-rajdhani);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ========================================================= */
+/* 1. FUTURISTIC CYBERPUNK GLASSMORPHISM THEME (html.dark)   */
+/* ========================================================= */
+
+html.dark .bg-white,
+html.dark .bg-\[\#041527\],
+html.dark .bg-\[\#04111e\],
+html.dark .bg-\[\#041628\],
+html.dark .bg-\[\#0B0D19\] {
+  background-color: #0A1B2D !important;
+}
+
+html.dark .bg-slate-50,
+html.dark .bg-slate-50\/30,
+html.dark .bg-slate-50\/40,
+html.dark .bg-slate-50\/50,
+html.dark .bg-slate-50\/60,
+html.dark .bg-slate-50\/70,
+html.dark .bg-slate-50\/80,
+html.dark .bg-slate-50\/90,
+html.dark .bg-slate-100,
+html.dark .bg-slate-100\/40,
+html.dark .bg-slate-100\/50,
+html.dark .bg-slate-100\/60,
+html.dark .bg-slate-100\/70,
+html.dark .bg-slate-100\/80,
+html.dark .bg-slate-100\/90,
+html.dark .bg-\[\#03172c\],
+html.dark .bg-\[\#031424\],
+html.dark .bg-\[\#051320\],
+html.dark .bg-\[\#051422\],
+html.dark .bg-\[\#020e1a\],
+html.dark .bg-\[\#020f1c\],
+html.dark .bg-\[\#031526\],
+html.dark .bg-\[\#070B14\] {
+  background-color: #071525 !important;
+}
+
+html.dark .hover\:bg-slate-50:hover,
+html.dark .hover\:bg-slate-50\/60:hover,
+html.dark .hover\:bg-slate-100:hover,
+html.dark .hover\:bg-slate-100\/70:hover,
+html.dark .hover\:bg-slate-200:hover,
+html.dark .hover\:bg-white:hover,
+html.dark .hover\:bg-\[\#061828\]:hover,
+html.dark .hover\:bg-\[\#06203a\]:hover,
+html.dark .hover\:bg-\[\#10182B\]:hover {
+  background-color: #0E253D !important;
+}
+
+html.dark .border-slate-100,
+html.dark .border-slate-100\/80,
+html.dark .border-slate-200,
+html.dark .border-slate-200\/60,
+html.dark .border-slate-200\/70,
+html.dark .border-slate-200\/80,
+html.dark .border-slate-200\/90,
+html.dark .border-slate-300,
+html.dark .border-\[\#0e3d54\],
+html.dark .border-\[\#0d3850\],
+html.dark .border-\[\#0e3950\],
+html.dark .border-\[\#183242\] {
+  border-color: rgba(0, 229, 255, 0.2) !important;
+}
+
+html.dark .divide-slate-100 > :not([hidden]) ~ :not([hidden]),
+html.dark .divide-slate-200 > :not([hidden]) ~ :not([hidden]),
+html.dark .divide-\[\#0e3d54\] > :not([hidden]) ~ :not([hidden]),
+html.dark .divide-\[\#183242\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: rgba(0, 229, 255, 0.16) !important;
+}
+
+html.dark .text-slate-900,
+html.dark .text-slate-800,
+html.dark .text-\[\#F5F7FF\] {
+  color: #EAFBFF !important;
+}
+
+html.dark .text-slate-700,
+html.dark .text-slate-600 {
+  color: #C7E3F0 !important;
+}
+
+html.dark .text-slate-500,
+html.dark .text-slate-400,
+html.dark .text-\[\#A5B0C5\] {
+  color: #8BA9BC !important;
+}
+
+html.dark .text-blue-600,
+html.dark .text-blue-700 {
+  color: #00E5FF !important;
+}
+
+html.dark .border-blue-500,
+html.dark .border-blue-600 {
+  border-color: #00E5FF !important;
+}
+
+html.dark .bg-blue-50,
+html.dark .bg-blue-50\/30,
+html.dark .bg-blue-50\/50,
+html.dark .bg-blue-50\/70,
+html.dark .bg-blue-50\/80,
+html.dark .bg-blue-100 {
+  background-color: rgba(0, 229, 255, 0.12) !important;
+}
+
+html.dark .hover\:bg-blue-50:hover,
+html.dark .hover\:bg-blue-100:hover {
+  background-color: rgba(0, 229, 255, 0.22) !important;
+}
+
+html.dark input[type="text"],
+html.dark input[type="number"],
+html.dark input[type="date"],
+html.dark input[type="time"],
+html.dark input[type="datetime-local"],
+html.dark input[type="email"],
+html.dark input[type="tel"],
+html.dark input[type="password"],
+html.dark select,
+html.dark textarea {
+  background-color: #071525 !important;
+  border-color: rgba(0, 229, 255, 0.25) !important;
+  border-radius: 8px !important;
+  color: #EAFBFF !important;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
+}
+
+html.dark input:focus,
+html.dark select:focus,
+html.dark textarea:focus {
+  border-color: #00E5FF !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(0, 229, 255, 0.22), 0 0 18px rgba(0, 229, 255, 0.18) !important;
+}
+
+html.dark input[type="date"]::-webkit-calendar-picker-indicator,
+html.dark input[type="time"]::-webkit-calendar-picker-indicator,
+html.dark input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  filter: invert(84%) sepia(56%) saturate(1800%) hue-rotate(155deg) brightness(105%) contrast(102%);
+  cursor: pointer;
+}
+
+html.dark thead {
+  background-color: #071525 !important;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.22) !important;
+}
+
+html.dark thead th {
+  color: #00E5FF !important;
+}
+
+html.dark tbody tr:hover {
+  background-color: #0E253D !important;
+}
+
+html.dark tbody tr:hover td {
+  background-color: transparent;
+}
+
+html.dark td:hover {
+  background-color: rgba(0, 229, 255, 0.1) !important;
+  box-shadow: inset 0 0 0 1px rgba(0, 229, 255, 0.3) !important;
+}
+
+html.dark .hover\:bg-blue-50\/30:hover,
+html.dark .hover\:bg-blue-50\/50:hover,
+html.dark .hover\:bg-blue-50\/80:hover,
+html.dark .hover\:bg-blue-50:hover,
+html.dark .hover\:bg-slate-50\/80:hover,
+html.dark .hover\:bg-slate-50\/90:hover,
+html.dark .hover\:bg-slate-100\/80:hover,
+html.dark .hover\:bg-indigo-50:hover {
+  background-color: #0E253D !important;
+}
+
+/* ========================================================= */
+/* 2. LIGHT MODE SUPPORT (html.light)                        */
+/* ========================================================= */
+
+html.light .bg-\[\#030B16\],
+html.light .bg-\[\#05080F\],
+html.light .bg-\[\#070B14\],
+html.light .bg-\[\#070B14\]\/95,
+html.light .bg-\[\#071525\],
+html.light .bg-\[\#071525\]\/90,
+html.light .bg-\[\#071525\]\/95,
+html.light .bg-\[\#02080f\],
+html.light .bg-\[\#020b14\],
+html.light .bg-\[\#020b14\]\/95,
+html.light .bg-\[\#020f1c\],
+html.light .bg-\[\#020e1a\],
+html.light .bg-\[\#020d18\] {
+  background-color: #f8fafc !important;
+}
+
+html.light .bg-\[\#0A1B2D\],
+html.light .bg-\[\#0A1B2D\]\/80,
+html.light .bg-\[\#0A1B2D\]\/90,
+html.light .bg-\[\#0B0D19\],
+html.light .bg-\[\#04111e\],
+html.light .bg-\[\#041422\],
+html.light .bg-\[\#041527\],
+html.light .bg-\[\#031525\],
+html.light .bg-\[\#041628\],
+html.light .bg-\[\#031424\],
+html.light .bg-\[\#041527\]\/95,
+html.light .bg-\[\#020e1a\]\/95,
+html.light .bg-\[\#020f1c\]\/95 {
+  background-color: #ffffff !important;
+}
+
+html.light .bg-\[\#051320\],
+html.light .bg-\[\#051422\],
+html.light .bg-\[\#061828\],
+html.light .bg-\[\#041d31\],
+html.light .bg-\[\#03172c\],
+html.light .bg-\[\#031526\],
+html.light .bg-\[\#051c33\],
+html.light .bg-\[\#061d33\],
+html.light .bg-\[\#031c38\] {
+  background-color: #f1f5f9 !important;
+}
+
+html.light .bg-slate-800,
+html.light .bg-slate-900,
+html.light .bg-slate-800\/80 {
+  background-color: #f1f5f9 !important;
+  color: #1e293b !important;
+}
+
+html.light .hover\:bg-\[\#06203a\]:hover,
+html.light .hover\:bg-\[\#062440\]:hover,
+html.light .hover\:bg-\[\#061d33\]:hover,
+html.light .hover\:bg-\[\#061828\]:hover,
+html.light .hover\:bg-\[\#0E253D\]:hover,
+html.light .hover\:bg-\[\#10182B\]:hover,
+html.light .hover\:bg-slate-700:hover {
+  background-color: #e2e8f0 !important;
+}
+
+html.light .border-\[\#183242\],
+html.light .border-\[\#0d3850\],
+html.light .border-\[\#0d3f58\],
+html.light .border-\[\#0c354c\],
+html.light .border-\[\#0e3950\],
+html.light .border-\[\#0e3d54\],
+html.light .border-\[\#0e3d54\]\/70,
+html.light .border-\[\#0e3d54\]\/50 {
+  border-color: #e2e8f0 !important;
+}
+
+html.light .divide-\[\#183242\] > :not([hidden]) ~ :not([hidden]),
+html.light .divide-\[\#0e3d54\] > :not([hidden]) ~ :not([hidden]) {
+  border-color: #e2e8f0 !important;
+}
+
+html.light .bg-cyan-950,
+html.light .bg-cyan-950\/80,
+html.light .bg-cyan-950\/60,
+html.light .bg-cyan-950\/40,
+html.light .bg-cyan-900,
+html.light .bg-cyan-900\/80 {
+  background-color: #ecfeff !important;
+  color: #0e7490 !important;
+}
+
+html.light .bg-blue-950,
+html.light .bg-blue-950\/80,
+html.light .bg-blue-950\/60,
+html.light .bg-blue-900\/80 {
+  background-color: #eff6ff !important;
+  color: #1d4ed8 !important;
+}
+
+html.light .bg-emerald-950,
+html.light .bg-emerald-950\/80,
+html.light .bg-emerald-950\/60,
+html.light .bg-emerald-900\/80 {
+  background-color: #ecfdf5 !important;
+  color: #047857 !important;
+}
+
+html.light .bg-purple-950,
+html.light .bg-purple-950\/80,
+html.light .bg-purple-950\/60,
+html.light .bg-purple-900\/90 {
+  background-color: #faf5ff !important;
+  color: #7e22ce !important;
+}
+
+html.light .bg-amber-950,
+html.light .bg-amber-950\/80,
+html.light .bg-amber-950\/60 {
+  background-color: #fffbeb !important;
+  color: #b45309 !important;
+}
+
+html.light .bg-rose-950,
+html.light .bg-rose-950\/60,
+html.light .bg-rose-900\/80,
+html.light .bg-red-950 {
+  background-color: #fff1f2 !important;
+  color: #be123c !important;
+}
+
+html.light .text-white:not(.bg-gradient-to-r):not(.bg-gradient-to-tr):not(.bg-cyan-600):not(.bg-cyan-500):not(.bg-blue-600):not(.bg-emerald-600):not(.bg-purple-600):not(.bg-indigo-600):not(.bg-amber-600):not(.bg-rose-600):not(.bg-red-600):not(.bg-\[\#0284c7\]),
+html.light .text-\[\#EAFBFF\],
+html.light .text-\[\#F5F7FF\] {
+  color: #0f172a !important;
+}
+
+html.light .text-slate-100,
+html.light .text-slate-200 {
+  color: #1e293b !important;
+}
+
+html.light .text-slate-300 {
+  color: #334155 !important;
+}
+
+html.light .text-slate-400,
+html.light .text-\[\#8BA9BC\],
+html.light .text-\[\#A5B0C5\] {
+  color: #64748b !important;
+}
+
+html.light .text-\[\#00E5FF\],
+html.light .text-\[\#00E5F5\],
+html.light .text-cyan-300,
+html.light .text-cyan-400 {
+  color: #0284c7 !important;
+}
+
+html.light .text-\[\#FF4D6D\],
+html.light .text-\[\#FF287A\] {
+  color: #e11d48 !important;
+}
+
+html.light .text-\[\#00F5A0\],
+html.light .text-\[\#00D6A0\] {
+  color: #059669 !important;
+}
+
+html.light input[type="text"],
+html.light input[type="number"],
+html.light input[type="date"],
+html.light input[type="time"],
+html.light input[type="datetime-local"],
+html.light input[type="email"],
+html.light input[type="tel"],
+html.light input[type="password"],
+html.light select,
+html.light textarea {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  color: #0f172a !important;
+}
+
+html.light input:focus,
+html.light select:focus,
+html.light textarea:focus {
+  border-color: #0284c7 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2) !important;
+}
+
+html.light thead {
+  background-color: #f1f5f9 !important;
+  border-bottom: 1px solid #cbd5e1 !important;
+}
+
+html.light thead th {
+  color: #0369a1 !important;
+}
+
+html.light tbody tr:hover {
+  background-color: #f8fafc !important;
+}
+
+html.light td:hover {
+  background-color: #f0f9ff !important;
+  box-shadow: inset 0 0 0 1px rgba(2, 132, 199, 0.25) !important;
+}
+
+/* Word A4 lesson plan always retains crisp paper look */
+.word-a4-paper {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+.word-a4-paper h1,
+.word-a4-paper h2 {
+  color: #1e3a8a !important;
+}
+
+.word-a4-paper h3 {
+  color: #0f172a !important;
+}
+
+.sepia-a4-paper {
+  background-color: #faf6ee !important;
+  color: #3c2f1f !important;
+}
+
+/* ========================================================= */
+/* 3. CYBERPUNK FUTURISTIC GLASSMORPHISM & DIGITAL GRID      */
+/* ========================================================= */
+
+html.dark .cyber-grid-bg {
+  background-color: #030B16;
+  background-image:
+    radial-gradient(ellipse 80% 45% at 50% 0%, rgba(0, 229, 255, 0.08), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 90% 85%, rgba(8, 124, 255, 0.07), transparent 70%),
+    linear-gradient(to right, rgba(0, 229, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 229, 255, 0.032) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+}
+
+.hud-panel {
+  position: relative;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.22s ease;
+}
+
+html.dark .hud-panel {
+  background-color: rgba(10, 27, 45, 0.86) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 229, 255, 0.22) !important;
+  border-radius: 12px !important;
+  box-shadow:
+    0 18px 42px -18px rgba(0, 0, 0, 0.85),
+    0 0 28px -12px rgba(0, 229, 255, 0.14),
+    inset 0 1px 0 rgba(234, 251, 255, 0.07);
+}
+
+html.dark .hud-panel::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 14px;
+  height: 14px;
+  border-top: 2px solid #00E5FF;
+  border-left: 2px solid #00E5FF;
+  border-top-left-radius: 12px;
+  filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.6));
+  pointer-events: none;
+  z-index: 3;
+}
+
+html.dark .hud-panel::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 14px;
+  height: 14px;
+  border-bottom: 2px solid #FF2E4C;
+  border-right: 2px solid #FF2E4C;
+  border-bottom-right-radius: 12px;
+  filter: drop-shadow(0 0 5px rgba(255, 46, 76, 0.6));
+  pointer-events: none;
+  z-index: 3;
+}
+
+html.dark .cyber-glass-card {
+  background: linear-gradient(155deg, rgba(10, 27, 45, 0.88) 0%, rgba(7, 21, 37, 0.92) 100%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 229, 255, 0.22);
+  box-shadow:
+    0 12px 32px -14px rgba(0, 0, 0, 0.82),
+    inset 0 1px 0 rgba(234, 251, 255, 0.06);
+  transition: border-color 0.24s ease, box-shadow 0.24s ease, transform 0.2s ease;
+}
+
+html.dark .cyber-glass-card:hover {
+  border-color: rgba(0, 229, 255, 0.45);
+  box-shadow:
+    0 16px 36px -14px rgba(0, 0, 0, 0.85),
+    0 0 24px -8px rgba(0, 229, 255, 0.22),
+    inset 0 1px 0 rgba(234, 251, 255, 0.08);
+}
+
+html.dark .cyber-btn-primary {
+  background: linear-gradient(90deg, #00E5FF 0%, #087CFF 100%);
+  color: #030B16;
+  font-weight: 800;
+  box-shadow: 0 8px 24px -6px rgba(0, 229, 255, 0.45), 0 0 18px rgba(8, 124, 255, 0.25);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease, filter 0.2s ease;
+}
+
+html.dark .cyber-btn-primary:hover:not(:disabled) {
+  filter: brightness(1.08);
+  box-shadow: 0 10px 30px -4px rgba(0, 229, 255, 0.65), 0 0 26px rgba(8, 124, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+html.dark .cyber-btn-primary:active:not(:disabled) {
+  transform: translateY(0) scale(0.985);
+}
+
+html.dark .hud-active-nav {
+  background: linear-gradient(90deg, #00E5FF 0%, #087CFF 100%) !important;
+  color: #030B16 !important;
+  font-weight: 800 !important;
+  border-radius: 6px !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%);
+  box-shadow: 0 4px 18px rgba(0, 229, 255, 0.32);
+}
+
+html.dark .hud-active-nav svg {
+  color: #030B16 !important;
+}
+
+html.dark .hud-chamfer-btn {
+  background: linear-gradient(90deg, #00E5FF 0%, #087CFF 100%) !important;
+  color: #030B16 !important;
+  font-weight: 800 !important;
+  border-radius: 6px !important;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 9px), calc(100% - 9px) 100%, 0 100%);
+  box-shadow: 0 4px 18px rgba(0, 229, 255, 0.3);
+  transition: filter 0.2s ease, box-shadow 0.2s ease, transform 0.18s ease;
+}
+
+html.dark .hud-chamfer-btn:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 6px 24px rgba(0, 229, 255, 0.48);
+}
+
+.hud-chamfer-icon {
+  border-radius: 6px;
+  clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 0 100%);
+}
+
+html.dark .hud-banner-pill {
+  background: linear-gradient(180deg, rgba(10, 27, 45, 0.92) 0%, rgba(7, 21, 37, 0.95) 100%);
+  border: 1px solid rgba(0, 229, 255, 0.28);
+  border-radius: 8px;
+  box-shadow: inset 0 0 18px rgba(0, 229, 255, 0.1), 0 0 20px rgba(0, 229, 255, 0.08);
+}
+
+/* ========================================================= */
+/* 4. SCROLLBARS & SELECTION                                 */
+/* ========================================================= */
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+html.dark ::-webkit-scrollbar-track {
+  background: #030B16;
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background: #13314B;
+  border-radius: 9999px;
+}
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: #00E5FF;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+.custom-horizontal-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #00E5FF #071525;
+}
+
+.custom-horizontal-scrollbar::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.custom-horizontal-scrollbar::-webkit-scrollbar-track {
+  background: #071525;
+}
+.custom-horizontal-scrollbar::-webkit-scrollbar-thumb {
+  background: #13314B;
+  border: 1px solid rgba(0, 229, 255, 0.5);
+  border-radius: 9999px;
+}
+
+::selection {
+  background-color: #00E5FF;
+  color: #030B16;
+}

@@ -1,0 +1,88 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global Safety Net
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() > 0 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+    function incoming() {
+      return request.resource.data;
+    }
+    function existing() {
+      return resource.data;
+    }
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+    function isAdmin() {
+      return isSignedIn() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        (request.auth.token.email != null && request.auth.token.email == 'giabaobamboo@gmail.com')
+      );
+    }
+
+    // Test connection endpoint
+    match /test/{docId} {
+      allow read: if true;
+    }
+
+    // Users collection with strict PII access control
+    match /users/{userId} {
+      allow get: if isSignedIn() && (isOwner(userId) || isAdmin());
+      allow list: if isAdmin();
+      allow create: if isSignedIn() && isOwner(userId) &&
+        incoming().keys().hasAll(['id', 'email', 'fullName', 'role']) &&
+        incoming().id == userId &&
+        incoming().email is string &&
+        incoming().fullName is string && incoming().fullName.size() <= 100;
+      allow update: if isSignedIn() && (isOwner(userId) || isAdmin()) &&
+        incoming().id == existing().id &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['fullName', 'phone', 'avatarUrl', 'schoolName']);
+      allow delete: if isAdmin();
+    }
+
+    // Classes collection
+    match /classes/{classId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && isValidId(classId) &&
+        incoming().keys().hasAll(['id', 'name', 'gradeLevel', 'academicYearId', 'roomNumber', 'homeroomTeacherId']) &&
+        incoming().id == classId &&
+        incoming().name is string && incoming().name.size() <= 50;
+      allow update: if isSignedIn() &&
+        (incoming().homeroomTeacherId == request.auth.uid || isAdmin()) &&
+        incoming().id == existing().id;
+      allow delete: if isSignedIn() &&
+        (existing().homeroomTeacherId == request.auth.uid || isAdmin());
+    }
+
+    // Students collection
+    match /students/{studentId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && isValidId(studentId) &&
+        incoming().keys().hasAll(['id', 'studentCode', 'fullName', 'classId']) &&
+        incoming().id == studentId &&
+        incoming().fullName is string && incoming().fullName.size() <= 100;
+      allow update: if isSignedIn() && incoming().id == existing().id;
+      allow delete: if isSignedIn();
+    }
+
+    // Question bank collection
+    match /questions/{questionId} {
+      allow read: if isSignedIn();
+      allow create: if isSignedIn() && isValidId(questionId) &&
+        incoming().keys().hasAll(['id', 'content', 'type', 'difficulty', 'subject', 'status']) &&
+        incoming().id == questionId &&
+        incoming().content is string && incoming().content.size() <= 5000;
+      allow update: if isSignedIn() && incoming().id == existing().id;
+      allow delete: if isSignedIn();
+    }
+  }
+}
